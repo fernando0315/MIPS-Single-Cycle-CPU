@@ -28,35 +28,35 @@ module reg_file(
     );
     
     //Hold the data of the reg file
-    reg [3:0] regFile[0:15];   
+    reg [15:0]regFile [0:15];   
     
-    assign A = regFile[Aaddr];
-    assign B = regFile[Baddr];
+    assign #5 A = regFile[Aaddr];
+    assign #5 B = regFile[Baddr];
     
     always @(posedge clk) begin
-        if(Load)
+        if(Load && Clear) 
             regFile[Caddr] <= C;
     end
     
-    always @(posedge clk) begin
+    always @(Clear) begin
         if(!Clear) begin
-            regFile[0] = 0;
-            regFile[1] = 0;
-            regFile[2] = 0;
-            regFile[3] = 0;
-            regFile[4] = 0;
-            regFile[5] = 0;
-            regFile[6] = 0;                  
-            regFile[7] = 0;
-            regFile[8] = 0;
-            regFile[9] = 0;
-            regFile[10] = 0;
-            regFile[11] = 0;
-            regFile[12] = 0;
-            regFile[13] = 0;
-            regFile[14] = 0;
-            regFile[15] = 0;
+            regFile[0] <= 0;
+            regFile[1] <= 0;
+            regFile[2] <= 0;
+            regFile[3] <= 0;
+            regFile[4] <= 0;
+            regFile[5] <= 0;
+            regFile[6] <= 0;                  
+            regFile[7] <= 0;
+            regFile[8] <= 0;
+            regFile[9] <= 0;
+            regFile[10] <= 0;
+            regFile[11] <= 0;
+            regFile[12] <= 0;
+            regFile[13] <= 0;
+            regFile[14] <= 0;
+            regFile[15] <= 0;
         end
-    end    
+    end 
     
 endmodule
